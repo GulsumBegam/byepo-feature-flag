@@ -5,7 +5,7 @@ built for the Byepo Technologies SDE technical assessment (Pragmatist track).
 
 Three role-scoped frontends, one backend, one database, complete tenant isolation.
 
-**Built by [Gulsum Begam (Moon)](https://github.com/GulsumBegam)** — MCA graduate, Full-Stack Developer
+**Built by [Gulsum Begam❤️](https://github.com/GulsumBegam)** — MCA graduate, Full-Stack Developer
 
 ---
 
