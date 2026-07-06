@@ -1,0 +1,69 @@
+// This is your Prisma schema file.
+// Learn more: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  SUPER_ADMIN
+  ORG_ADMIN
+  END_USER
+}
+
+model Organization {
+  id        String   @id @default(uuid())
+  name      String
+  createdAt DateTime @default(now())
+
+  users        User[]
+  featureFlags FeatureFlag[]
+  auditLogs    AuditLog[]
+}
+
+model User {
+  id             String   @id @default(uuid())
+  email          String   @unique
+  passwordHash   String
+  role           Role
+  createdAt      DateTime @default(now())
+
+  // Nullable because Super Admin doesn't belong to any single organization
+  organizationId String?
+  organization   Organization? @relation(fields: [organizationId], references: [id])
+
+  auditLogs      AuditLog[]
+}
+
+model FeatureFlag {
+  id        String   @id @default(uuid())
+  key       String
+  enabled   Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  organizationId String
+  organization   Organization @relation(fields: [organizationId], references: [id])
+
+  // A flag key should be unique WITHIN an organization,
+  // but two different orgs can both have a "dark_mode" flag.
+  @@unique([organizationId, key])
+}
+
+model AuditLog {
+  id        String   @id @default(uuid())
+  action    String   // e.g. "FLAG_CREATED", "FLAG_TOGGLED", "ORG_CREATED"
+  metadata  Json?    // extra details, e.g. { "flagKey": "dark_mode", "from": false, "to": true }
+  createdAt DateTime @default(now())
+
+  performedById String
+  performedBy   User   @relation(fields: [performedById], references: [id])
+
+  organizationId String
+  organization   Organization @relation(fields: [organizationId], references: [id])
+}
