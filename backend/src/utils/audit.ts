@@ -1,4 +1,5 @@
 import { prisma } from "../lib/prisma";
+import { Prisma } from "@prisma/client";
 
 type LogParams = {
   action: string;
@@ -21,7 +22,11 @@ export async function logAction({
       action,
       performedById,
       organizationId,
-      metadata: metadata ?? undefined,
+      // Prisma's Json field expects its own InputJsonValue type, which a
+      // plain Record<string, unknown> doesn't structurally satisfy under
+      // strict TypeScript. Since we already control what we pass in here
+      // (small, JSON-safe objects), casting is safe.
+      metadata: (metadata as Prisma.InputJsonValue) ?? undefined,
     },
   });
 }
