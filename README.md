@@ -38,30 +38,30 @@ across organizations.
 ### Super Admin — creating an organization
 Static credentials, no signup. Can create and view all organizations on the platform.
 
-<img src="docs/screenshots/super-admin-1-creating.png" width="700" alt="Super Admin creating an organization" />
-<img src="docs/screenshots/super-admin-2-created.png" width="700" alt="Organization saved and listed" />
+<img src="docs/super-admin-1-creating.png" width="700" alt="Super Admin creating an organization" />
+<img src="docs/super-admin-2-created.png" width="700" alt="Organization saved and listed" />
 
 ### Organization Admin — managing feature flags
 Each Org Admin only ever sees and manages flags for their own organization.
 
-<img src="docs/screenshots/org-admin-1-existing-flag.png" width="700" alt="Existing enabled flag" />
-<img src="docs/screenshots/org-admin-2-adding-new.png" width="700" alt="Creating a new flag" />
-<img src="docs/screenshots/org-admin-3-created.png" width="700" alt="New flag created, both listed" />
-<img src="docs/screenshots/org-admin-4-both-enabled.png" width="700" alt="Both flags toggled on" />
-<img src="docs/screenshots/org-admin-5-deleted-one.png" width="700" alt="One flag deleted" />
+<img src="docs/org-admin-1-existing-flag.png" width="700" alt="Existing enabled flag" />
+<img src="docs/org-admin-2-adding-new.png" width="700" alt="Creating a new flag" />
+<img src="docs/org-admin-3-created.png" width="700" alt="New flag created, both listed" />
+<img src="docs/org-admin-4-both-enabled.png" width="700" alt="Both flags toggled on" />
+<img src="docs/org-admin-5-deleted-one.png" width="700" alt="One flag deleted" />
 
 ### End User — checking a feature, and proving isolation
 The same flag key returns different results depending on the organization —
 because it's scoped per-tenant at the database level, not just hidden in the UI.
 
-<img src="docs/screenshots/user-app-1-disabled-wrong-org.png" width="450" alt="Disabled for the wrong organization" />
-<img src="docs/screenshots/user-app-2-enabled-correct-org.png" width="450" alt="Enabled for the correct organization" />
+<img src="docs/user-app-1-disabled-wrong-org.png" width="450" alt="Disabled for the wrong organization" />
+<img src="docs/user-app-2-enabled-correct-org.png" width="450" alt="Enabled for the correct organization" />
 
 ### Database — Prisma Studio, live data
-<img src="docs/screenshots/db-organization.png" width="700" alt="Organization table" />
-<img src="docs/screenshots/db-user.png" width="700" alt="User table with hashed passwords" />
-<img src="docs/screenshots/db-featureflag.png" width="700" alt="FeatureFlag table" />
-<img src="docs/screenshots/db-auditlog.png" width="700" alt="AuditLog table" />
+<img src="docs/db-organization.png" width="700" alt="Organization table" />
+<img src="docs/db-user.png" width="700" alt="User table with hashed passwords" />
+<img src="docs/db-featureflag.png" width="700" alt="FeatureFlag table" />
+<img src="docs/db-auditlog.png" width="700" alt="AuditLog table" />
 
 ---
 
